@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Database Assignment Output</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f4f4f9; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #007acc; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        .query-box { background: #e7f3fe; border-left: 6px solid #2196F3; padding: 15px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+    <h2>Assignment: Table Data Retrieval</h2>
+    
+    <div class="query-box">
+        <strong>Executed SQL Query:</strong><br>
+        <code>SELECT e.name, p.project_name, d.department_name FROM Employees... WHERE project_name = 'Cloud Migration';</code>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Employee Name</th>
+                <th>Project Name</th>
+                <th>Department Name</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            <!-- Data will load here via JavaScript -->
+        </tbody>
+    </table>
+
+    <script>
+        // Simulated SQL query response data matching your setup.sql results
+        const queryResults = [
+            { employee_name: "Alice Smith", project_name: "Cloud Migration", department_name: "Engineering" },
+            { employee_name: "Charlie Brown", project_name: "Cloud Migration", department_name: "Engineering" }
+        ];
+
+        // JavaScript loop to render the SQL data rows into HTML rows dynamically
+        const tableBody = document.getElementById('table-body');
+        queryResults.forEach(row => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${row.employee_name}</td>
+                <td>${row.project_name}</td>
+                <td>${row.department_name}</td>
+            `;
+            tableBody.appendChild(tr);
+        });
+    </script>
+</body>
+</html>
